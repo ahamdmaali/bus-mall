@@ -3,6 +3,7 @@ const section=document.getElementById('section');
 const leftimage=document.getElementById('leftimage');
 const middleimage=document.getElementById('middleimage');
 const rightimage=document.getElementById('rightimage');
+
 const items= [
     'bag',
     'banana',
@@ -52,10 +53,11 @@ const itemsext= [
 
 function Item(name,imgExt){
     this.name=name
+    this.imgExt=imgExt
     this.votes=0;
     this.views=0;
     this.path=`./img/${name}.${imgExt}`
-    Item.all.push(this);
+    Item.all.push(this);          
 }
 Item.all=[];
 
@@ -77,33 +79,43 @@ function render(){
     middleimage.alt=middle.name;
 
     const rightindex=randomNumber(0,Item.all.length-1);
-    const riht=Item.all[rightindex];
-    rightimage.src=riht.path;
-    rightimage.title=riht.name;
-    rightimage.alt=riht.name
+    const right=Item.all[rightindex];
+    rightimage.src=right.path;
+    rightimage.title=right.name;
+    rightimage.alt=right.name
 }
 
 section.addEventListener('click',clickhandler);
+let cart=document.getElementById('cart');
 
 function clickhandler(event){
+    
     if(event.target.id === 'leftimage' || event.target.id === 'middleimage' || event.target.id === 'rightimage');
     for(let i=0;i<Item.all.length;i++){
         if(Item.all[i].name === event.target.title){
             Item.all[i].votes++;
             Item.all[i].views++;
-           if(){
-            console.log(Item.all[i]);
-           }
+            
+
+            
+            let data=document.createElement('li');
+            data.textContent= Item.all[i].name+'=' +(Item.all[i].votes);
+            cart.appendChild(data);
+            
             
         }
     }
+    
+
   render();
   
 }
-    
-   
+
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   render();
+ 
+
+
