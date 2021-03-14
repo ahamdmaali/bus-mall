@@ -1,0 +1,63 @@
+nav{
+    background-color:mediumturquoise;
+}
+nav ul li{
+    display: inline-block;
+    margin: 30px;
+    font-size: large;
+    font-weight: bolder;
+    color: black;
+    text-decoration: black;
+    
+    
+}
+body{
+    background-image: url(https://www.wmbusphotos.com/NXWM/4001-4224/twm4075.120331.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main img{
+    width: 370px;
+    height: 370px;
+    border: darkmagenta;
+    border-radius: 100px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    mask-border-outset:initial;
+
+}
+main{
+    margin-left: 80px;
+}
+h1{
+    text-align: center;
+    background-color:mediumturquoise;
+    display: block;
+    border-radius: 20px;
+    background-position: center;
+    margin-left: 240px;
+    margin-right: 300px;
+}
+#cart{
+    background-color: darkturquoise;
+    display: block;
+    margin: 30px;
+    font-size: large;
+    font-weight: bolder;
+    color: black;
+    text-decoration: black;
+    border-radius: 20px;
+    background-position: center;
+    margin-left: 240px;
+    margin-right: 300px;
+}
+h2{
+    text-align: center;
+    background-color:mediumturquoise;
+    display: block;
+    border-radius: 20px;
+    background-position: center;
+    margin-left: 240px;
+    margin-right: 300px;
+    font-size: larger;
+}
