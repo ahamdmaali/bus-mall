@@ -68,11 +68,12 @@ function randomNumber(min, max) {
     
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-  
+
 function render(){
     let leftindex=randomNumber(0,Item.all.length-1); 
     let middleindex=randomNumber(0,Item.all.length-1);
     let rightindex=randomNumber(0,Item.all.length-1);
+    
     if(leftindex !== middleindex && middleindex!== rightindex && leftindex !== rightindex){
     const left=Item.all[leftindex]
     leftimage.src=left.path;
@@ -95,11 +96,13 @@ function render(){
     }
 }
 
+
 section.addEventListener('click',clickhandler);
 
 
 let counter=25;
-let list=[];
+
+
 function clickhandler(event){
     counter--;
     if(counter===0){
@@ -118,10 +121,11 @@ function clickhandler(event){
        for(let i=0;i<Item.all.length;i++){
        
           if(Item.all[i].name === event.target.title){
+            
               Item.all[i].votes++;
               Item.all[i].views++;
-            //   let data=Item.all[i].name +' ,Votes = '+(Item.all[i].votes  +' ,views = '+Item.all[i].views);
-            //   list.push(data);
+              
+          
             }
         
         }
@@ -154,8 +158,8 @@ let chart = new Chart(ctx, {
     data: {
         labels:products,
         datasets: [{
-            label: 'Products views and votes',
-            labelcolor:'black',
+            label: 'Products votes',
+            
             backgroundColor:  [
               'rgba(255, 99, 132, 5)',
               'rgba(54, 162, 235, 5)',
@@ -237,14 +241,14 @@ let chart = new Chart(ctx, {
         xAxes: [{
             ticks: {
                 fontColor: "red",
-                fontsize:'28px',
+                fontSize:'18',
                 beginAtZero: true
             }
         }],
         yAxes:[{
           ticks: {
               fontColor: "blue",
-              fontsize:'28px',
+              fontSize:'12',
               stepSize: 1,
               beginAtZero: true
           }
