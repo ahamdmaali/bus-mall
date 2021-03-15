@@ -68,12 +68,12 @@ function randomNumber(min, max) {
     
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
+let currentimages=[];
 function render(){
     let leftindex=randomNumber(0,Item.all.length-1); 
     let middleindex=randomNumber(0,Item.all.length-1);
     let rightindex=randomNumber(0,Item.all.length-1);
-    
+     currentimages=[leftindex,middleindex,rightindex]
     if(leftindex !== middleindex && middleindex!== rightindex && leftindex !== rightindex){
     const left=Item.all[leftindex]
     leftimage.src=left.path;
@@ -96,7 +96,7 @@ function render(){
     }
 }
 
-
+console.log(currentimages)
 section.addEventListener('click',clickhandler);
 
 
@@ -229,7 +229,80 @@ let chart = new Chart(ctx, {
             ],
           data:productsVotes
           
-        }]
+        },{
+          label: 'Products views',
+          
+          backgroundColor:  [
+            'rgba(255, 99, 132, 5)',
+            'rgba(54, 162, 235, 5)',
+            'rgba(255, 206, 86, 5)',
+            'rgba(75, 192, 192, 5)',
+            'rgba(153, 102, 255, 5)',
+            'rgba(255, 159, 64, 5)',
+            'rgb(0, 0, 255)',
+            '	rgb(128, 0, 255)',
+            '	rgb(255, 0, 0)',
+            'rgb(0, 255, 255)',
+            'rgb(102, 255, 102)',
+            'rgb(204, 51, 0)',
+            'rgb(204, 102, 255)',
+            'rgb(102, 153, 153)',
+            'rgb(51, 102, 0)',
+            'rgb(51, 153, 102)',
+            'rgb(0, 255, 0)',
+            'rgb(255, 153, 153)',
+            'rgb(102, 0, 51)',
+            'rgb(0, 102, 153)',
+        ],
+          borderColor: 'rgb(000, 99, 132)',
+          color: [
+            'rgba(255, 99, 132, 5)',
+            'rgba(54, 162, 235, 5)',
+            'rgba(255, 206, 86, 5)',
+            'rgba(75, 192, 192, 5)',
+            'rgba(153, 102, 255, 5)',
+            'rgba(255, 159, 64, 5)',
+            'rgb(0, 0, 255)',
+            '	rgb(128, 0, 255)',
+            '	rgb(255, 0, 0)',
+            'rgb(0, 255, 255)',
+            'rgb(102, 255, 102)',
+            'rgb(204, 51, 0)',
+            'rgb(204, 102, 255)',
+            'rgb(102, 153, 153)',
+            'rgb(51, 102, 0)',
+            'rgb(51, 153, 102)',
+            'rgb(0, 255, 0)',
+            'rgb(255, 153, 153)',
+            'rgb(102, 0, 51)',
+            'rgb(0, 102, 153)',
+          ],
+          labels:[
+            'rgba(255, 99, 132, 5)',
+            'rgba(54, 162, 235, 5)',
+            'rgba(255, 206, 86, 5)',
+            'rgba(75, 192, 192, 5)',
+            'rgba(153, 102, 255, 5)',
+            'rgba(255, 159, 64, 5)',
+            'rgb(0, 0, 255)',
+            '	rgb(128, 0, 255)',
+            '	rgb(255, 0, 0)',
+            'rgb(0, 255, 255)',
+            'rgb(102, 255, 102)',
+            'rgb(204, 51, 0)',
+            'rgb(204, 102, 255)',
+            'rgb(102, 153, 153)',
+            'rgb(51, 102, 0)',
+            'rgb(51, 153, 102)',
+            'rgb(0, 255, 0)',
+            'rgb(255, 153, 153)',
+            'rgb(102, 0, 51)',
+            'rgb(0, 102, 153)',
+          ],
+        data:productsViews
+        
+      }
+      ]
         
     },
 
