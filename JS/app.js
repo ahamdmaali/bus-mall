@@ -86,26 +86,55 @@ function render(){
 }
 
 section.addEventListener('click',clickhandler);
-let cart=document.getElementById('cart');
 
+
+let counter=25;
+let list=[];
 function clickhandler(event){
+    counter--;
+    if(counter===0){
+        section.removeEventListener('click',clickhandler);
+        render();
+       
+        let results=document.getElementById('button')
+        results.textContent='View your cart'
+        results.addEventListener('click',buttomhandler);
+        function buttomhandler(event){
+            event.preventDefault();
+            document.getElementById('cart').innerHTML=list
+            
+            
+          }
+          
+         
+
+ 
+
+
+        
     
-    if(event.target.id === 'leftimage' || event.target.id === 'middleimage' || event.target.id === 'rightimage');
+    }else{
+    if(event.target.id === 'leftimage' || event.target.id === 'middleimage' || event.target.id === 'rightimage'){
     for(let i=0;i<Item.all.length;i++){
+       
         if(Item.all[i].name === event.target.title){
             Item.all[i].votes++;
             Item.all[i].views++;
             
+           
+             let data=Item.all[i].name +' ,Votes = '+(Item.all[i].votes  +' ,views = '+Item.all[i].views);
 
-            
-            let data=document.createElement('li');
-            data.textContent= Item.all[i].name+'=' +(Item.all[i].votes);
-            cart.appendChild(data);
-            
+             list.push(data);
+             
+             
+           
+           
             
         }
+        
     }
-    
+  }
+    }
 
   render();
   
