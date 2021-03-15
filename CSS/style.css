@@ -39,17 +39,19 @@ h1{
     margin-right: 300px;
 }
 #cart{
-    background-color: darkturquoise;
+    background-color:maroon;
     display: block;
     margin: 30px;
     font-size: large;
     font-weight: bolder;
     color: black;
-    text-decoration: black;
+    text-decoration-line: overline;
     border-radius: 20px;
     background-position: center;
     margin-left: 240px;
     margin-right: 300px;
+    
+    
 }
 h2{
     text-align: center;
@@ -60,4 +62,15 @@ h2{
     margin-left: 240px;
     margin-right: 300px;
     font-size: larger;
+}
+button{
+    align-content: center;
+    margin-right: 200px;
+    border-style: solid;
+    border-color: maroon;
+    background-color: maroon;
+    font-size: 22px;
+    
+    color: white;
+    font-family: monospace;
 }
