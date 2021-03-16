@@ -59,11 +59,11 @@ function Item(name,imgExt){
     this.path=`./img/${name}.${imgExt}`
     Item.all.push(this); 
     
-    Item.all= JSON.parse(localStorage.getItem("products"));
+    
 }
 
 Item.all=[];
-
+Item.all= JSON.parse(localStorage.getItem("products"));
 
 
 for(let i=0;i<items.length;i++){
@@ -339,6 +339,16 @@ let chart = new Chart(ctx, {
 });
 
 }
-
+function retrieve()
+{
+  
+  if(localStorage.length >0)
+  {
+    Item.all = JSON.parse(localStorage.getItem("section"));
+    
+    render();
+  }
+  
+}
 
 render();
