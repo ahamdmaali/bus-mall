@@ -59,11 +59,11 @@ function Item(name,imgExt){
     this.path=`./img/${name}.${imgExt}`
     Item.all.push(this); 
     
-    
+    Item.all= JSON.parse(localStorage.getItem("products"));
 }
 
 Item.all=[];
-Item.all= JSON.parse(localStorage.getItem("products"));
+
 
 
 for(let i=0;i<items.length;i++){
