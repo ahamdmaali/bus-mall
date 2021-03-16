@@ -339,6 +339,16 @@ let chart = new Chart(ctx, {
 });
 
 }
-
+function retrieve()
+{
+  
+  if(localStorage.length >0)
+  {
+    Item.all = JSON.parse(localStorage.getItem("section"));
+    
+    render();
+  }
+  
+}
 
 render();
