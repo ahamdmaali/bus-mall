@@ -57,9 +57,14 @@ function Item(name,imgExt){
     this.votes=0;
     this.views=0;
     this.path=`./img/${name}.${imgExt}`
-    Item.all.push(this);          
+    Item.all.push(this); 
+    
+    Item.all= JSON.parse(localStorage.getItem("products"));
 }
+
 Item.all=[];
+
+
 
 for(let i=0;i<items.length;i++){
     new Item(items[i],itemsext[i]);
@@ -68,13 +73,15 @@ function randomNumber(min, max) {
     
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-let currentimages=[];
+
+
 function render(){
     let leftindex=randomNumber(0,Item.all.length-1); 
     let middleindex=randomNumber(0,Item.all.length-1);
     let rightindex=randomNumber(0,Item.all.length-1);
-     currentimages=[leftindex,middleindex,rightindex]
-    if(leftindex !== middleindex && middleindex!== rightindex && leftindex !== rightindex){
+       
+    if(leftindex !== middleindex && middleindex!== rightindex && leftindex !== rightindex ){
+      
     const left=Item.all[leftindex]
     leftimage.src=left.path;
     leftimage.title=left.name;
@@ -96,7 +103,7 @@ function render(){
     }
 }
 
-console.log(currentimages)
+
 section.addEventListener('click',clickhandler);
 
 
@@ -116,22 +123,23 @@ function clickhandler(event){
 
           
     }else{
-        
+     
       if(event.target.id === 'leftimage' || event.target.id === 'middleimage' || event.target.id === 'rightimage'){
+        
        for(let i=0;i<Item.all.length;i++){
-       
+        
           if(Item.all[i].name === event.target.title){
             
               Item.all[i].votes++;
               Item.all[i].views++;
               
-          
+            
             }
         
         }
       }
     }
-
+    localStorage.setItem("products",JSON.stringify(Item.all));
   render();
   
 }
@@ -145,10 +153,10 @@ function chart(){
     products.push(Item.all[i].name);
   }
   for(let i=0;i<Item.all.length;i++){
-    productsVotes.push(Item.all[i].votes);
+    productsVotes.push(JSON.parse(localStorage.getItem("products"))[i].votes);
   }
   for(let i=0;i<Item.all.length;i++){
-    productsViews.push(Item.all[i].views);
+    productsViews.push(JSON.parse(localStorage.getItem("products"))[i].views);
   }
 let chart = new Chart(ctx, {
     
@@ -331,5 +339,16 @@ let chart = new Chart(ctx, {
 });
 
 }
+// function retrieve()
+// {
+  
+//   if(localStorage.length >0)
+//   {
+//     Item.all = JSON.parse(localStorage.getItem("section"));
+    
+//     render();
+//   }
+  
+// }
 
 render();
