@@ -1,4 +1,6 @@
 'use strict'
+
+
 const section=document.getElementById('section');
 const leftimage=document.getElementById('leftimage');
 const middleimage=document.getElementById('middleimage');
@@ -143,7 +145,7 @@ function clickhandler(event){
     }
    
   render();
-  return data;
+
 }
 
 function chart(){
