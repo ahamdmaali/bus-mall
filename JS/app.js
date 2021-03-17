@@ -52,7 +52,7 @@ const itemsext= [
 ];
 
 
-
+Item.all=[];
 function Item(name,imgExt){
     this.name=name
     this.imgExt=imgExt
@@ -60,20 +60,29 @@ function Item(name,imgExt){
     this.views=0;
     this.path=`./img/${name}.${imgExt}`
     Item.all.push(this); 
+   
     
-    Item.all= JSON.parse(localStorage.getItem("products"));
 }
 
-Item.all=[];
 
-
+// function retrieve() {
+//   const data = JSON.parse(localStorage.getItem('products'));
+//   if (data) {
+//     Item.all = JSON.parse(localStorage.getItem('dataproductsStorage'));
+//     render();
+//     clickhandler
+//   } else {
+//     render();
+//   }
+// }
 
 for(let i=0;i<items.length;i++){
     new Item(items[i],itemsext[i]);
 }
+
 function randomNumber(min, max) {
     
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
@@ -84,7 +93,7 @@ function render(){
     let rightindex=randomNumber(0,Item.all.length-1);
        
     if(leftindex !== middleindex && middleindex!== rightindex && leftindex !== rightindex ){
-      
+      localStorage.setItem("products",JSON.stringify(Item.all));
     const left=Item.all[leftindex]
     leftimage.src=left.path;
     leftimage.title=left.name;
@@ -101,6 +110,7 @@ function render(){
     rightimage.src=right.path;
     rightimage.title=right.name;
     rightimage.alt=right.name
+    localStorage.setItem('product', JSON.stringify(Item.all));
     }else{
          render();
     }
@@ -117,7 +127,7 @@ function clickhandler(event){
     counter--;
     if(counter===0){
         section.removeEventListener('click',clickhandler);
-      
+       
          
         chart();
             
@@ -126,7 +136,7 @@ function clickhandler(event){
 
           
     }else{
-     
+      event.preventDefault();
       if(event.target.id === 'leftimage' || event.target.id === 'middleimage' || event.target.id === 'rightimage'){
         
        for(let i=0;i<Item.all.length;i++){
@@ -135,20 +145,27 @@ function clickhandler(event){
             
               Item.all[i].votes++;
               Item.all[i].views++;
-              localStorage.setItem("products",JSON.stringify(Item.all));
+              
                
 
             }
-        
+            
         }
       }
     }
-   
+    
+    
   render();
 
 }
+// // Item.all= JSON.parse(localStorage.getItem("products"));
+
+// // getData();
+
 
 function chart(){
+  
+  // Item.all= JSON.parse(localStorage.getItem("products"));
   let ctx = document.getElementById('Chart').getContext('2d');
   let products=[];
   let productsVotes=[];
@@ -158,10 +175,10 @@ function chart(){
     products.push(Item.all[i].name);
   }
   for(let i=0;i<Item.all.length;i++){
-    productsVotes.push(JSON.parse(localStorage.getItem("products"))[i].votes);
+    productsVotes.push(Item.all[i].votes);
   }
   for(let i=0;i<Item.all.length;i++){
-    productsViews.push(JSON.parse(localStorage.getItem("products"))[i].views);
+    productsViews.push(Item.all[i].views);
   }
 let chart = new Chart(ctx, {
     
@@ -346,4 +363,17 @@ let chart = new Chart(ctx, {
 }
 
 
-render();
+function getData(){
+  let getInfo = localStorage.getItem('product');
+  
+  if (getInfo !== null){
+    
+    
+    Item.all= JSON.parse(getInfo);
+    
+    
+  }
+  render()
+}
+getData();
+
