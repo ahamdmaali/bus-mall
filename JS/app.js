@@ -52,7 +52,7 @@ const itemsext= [
 ];
 
 
-Item.all=[];
+
 function Item(name,imgExt){
     this.name=name
     this.imgExt=imgExt
@@ -64,18 +64,7 @@ function Item(name,imgExt){
     
 }
 
-
-// function retrieve() {
-//   const data = JSON.parse(localStorage.getItem('products'));
-//   if (data) {
-//     Item.all = JSON.parse(localStorage.getItem('dataproductsStorage'));
-//     render();
-//     clickhandler
-//   } else {
-//     render();
-//   }
-// }
-
+Item.all=[];
 for(let i=0;i<items.length;i++){
     new Item(items[i],itemsext[i]);
 }
@@ -85,7 +74,7 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
+// let views=0;
 function render(){
   
    let leftindex=randomNumber(0,Item.all.length-1); 
@@ -98,18 +87,19 @@ function render(){
     leftimage.src=left.path;
     leftimage.title=left.name;
     leftimage.alt=left.name;
-    
+    left.views++;
 
     const middle=Item.all[middleindex]
     middleimage.src=middle.path;
     middleimage.title=middle.name;
     middleimage.alt=middle.name;
-
+    middle.views++;
     
     const right=Item.all[rightindex];
     rightimage.src=right.path;
     rightimage.title=right.name;
-    rightimage.alt=right.name
+    rightimage.alt=right.name;
+    right.views++;
     localStorage.setItem('product', JSON.stringify(Item.all));
     }else{
          render();
@@ -144,7 +134,7 @@ function clickhandler(event){
           if(Item.all[i].name === event.target.title){
             
               Item.all[i].votes++;
-              Item.all[i].views++;
+              // Item.all[i].views++;
               
                
 
@@ -158,14 +148,11 @@ function clickhandler(event){
   render();
 
 }
-// // Item.all= JSON.parse(localStorage.getItem("products"));
 
-// // getData();
 
 
 function chart(){
   
-  // Item.all= JSON.parse(localStorage.getItem("products"));
   let ctx = document.getElementById('Chart').getContext('2d');
   let products=[];
   let productsVotes=[];
