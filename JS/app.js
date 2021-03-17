@@ -59,7 +59,7 @@ function Item(name,imgExt){
     this.path=`./img/${name}.${imgExt}`
     Item.all.push(this); 
     
-    // Item.all= JSON.parse(localStorage.getItem("products"));
+    Item.all= JSON.parse(localStorage.getItem("products"));
 }
 
 Item.all=[];
@@ -133,17 +133,19 @@ function clickhandler(event){
             
               Item.all[i].votes++;
               Item.all[i].views++;
-              
-            
+              localStorage.setItem("products",JSON.stringify(Item.all));
+               
+
             }
         
         }
       }
     }
-    localStorage.setItem("products",JSON.stringify(Item.all));
+   
   render();
-  
+  return data;
 }
+
 function chart(){
   let ctx = document.getElementById('Chart').getContext('2d');
   let products=[];
