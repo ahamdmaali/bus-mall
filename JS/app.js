@@ -74,7 +74,7 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// let views=0;
+
 function render(){
   
    let leftindex=randomNumber(0,Item.all.length-1); 
@@ -134,7 +134,7 @@ function clickhandler(event){
           if(Item.all[i].name === event.target.title){
             
               Item.all[i].votes++;
-              // Item.all[i].views++;
+              
               
                
 
@@ -360,7 +360,7 @@ function getData(){
     
     
   }
-  render()
+  render();
 }
 getData();
 
